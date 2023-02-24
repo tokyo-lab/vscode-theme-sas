@@ -178,7 +178,7 @@
     "function": {
       "patterns": [
         {
-          "name": "support.function.sql",
+          "name": "function.sql",
           "match": "(?i)(?<=\\b)(BTRIM|COALESCE|LOWER|UPPER|SUBSTRING|AVG|MEAN|COUNT|FREQ|N|CSS|CV|MAX|MEDIAN|MIN|NMISS|PRT|RANGE|STD|STDERR|SUM|SUMWGT|T|USS|VAR)(?=\\s*\\()"
         }
       ]

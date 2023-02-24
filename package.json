@@ -10,6 +10,26 @@
     "Themes"
   ],
   "contributes": {
+    "languages": [
+      {
+        "id": "sas",
+        "aliases": [
+          "SAS",
+          "sas"
+        ],
+        "extensions": [
+          ".sas"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "sas",
+        "scopeName": "source.sas",
+        "path": "./syntaxes/sas.tmLanguage.json"
+      }
+    ],
     "themes": [
       {
         "label": "dark sas",

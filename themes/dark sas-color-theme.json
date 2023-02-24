@@ -10,127 +10,143 @@
   "tokenColors": [
     {
       "name": "Comment",
-      "scope": ["comment", "punctuation.definition.comment"],
+      "scope": ["global.comment.line.sas", "global.comment.block.sas"],
       "settings": {
         "fontStyle": "italic",
-        "foreground": "#546E7A"
+        "foreground": "#3c9d38"
       }
     },
     {
-      "name": "Variables",
-      "scope": ["variable", "string constant.other.placeholder"],
+      "name": "Global Statement",
+      "scope": ["global.statement.sas"],
       "settings": {
-        "foreground": "#EEFFFF"
+        "foreground": "#2458dc"
       }
     },
     {
-      "name": "Colors",
-      "scope": ["constant.other.color"],
+      "name": "Macro Variable",
+      "scope": ["macro.variable.sas"],
       "settings": {
-        "foreground": "#ffffff"
+        "foreground": "#d89400"
       }
     },
     {
-      "name": "Invalid",
-      "scope": ["invalid", "invalid.illegal"],
+      "name": "Macro Routines",
+      "scope": ["macro.routine.sas"],
       "settings": {
         "foreground": "#FF5370"
       }
     },
     {
-      "name": "Keyword, Storage",
-      "scope": ["keyword", "storage.type", "storage.modifier"],
+      "name": "Macro Statements",
+      "scope": ["macro.statement.sas"],
       "settings": {
-        "foreground": "#C792EA"
+        "foreground": "#7d2fb1"
       }
     },
     {
-      "name": "Operator, Misc",
-      "scope": [
-        "keyword.control",
-        "constant.other.color",
-        "punctuation",
-        "meta.tag",
-        "punctuation.definition.tag",
-        "punctuation.separator.inheritance.php",
-        "punctuation.definition.tag.html",
-        "punctuation.definition.tag.begin.html",
-        "punctuation.definition.tag.end.html",
-        "punctuation.section.embedded",
-        "keyword.other.template",
-        "keyword.other.substitution"
-      ],
+      "name": "Macro Functions",
+      "scope": ["macro.function.sas"],
+      "settings": {
+        "foreground": "#a72573"
+      }
+    },
+    {
+      "name": "Server Connect",
+      "scope": ["server.connect.sas"],
       "settings": {
         "foreground": "#89DDFF"
       }
     },
     {
-      "name": "Tag",
-      "scope": [
-        "entity.name.tag",
-        "meta.tag.sgml",
-        "markup.deleted.git_gutter"
-      ],
+      "name": "Procedures",
+      "scope": ["procedure.sas"],
       "settings": {
         "foreground": "#f07178"
       }
     },
     {
-      "name": "Function, Special Method",
-      "scope": [
-        "entity.name.function",
-        "meta.function-call",
-        "variable.function",
-        "support.function",
-        "keyword.other.special-method"
-      ],
+      "name": "Procedure Options",
+      "scope": ["procedure.option.sql.sas"],
       "settings": {
-        "foreground": "#82AAFF"
+        "foreground": "#f071ca"
+      }
+    },
+    {
+      "name": "Procedures SQL",
+      "scope": ["procedure.sql.sas"],
+      "settings": {
+        "foreground": "#864447"
+      }
+    },
+    {
+      "name": "Procedure SQL Alter Table",
+      "scope": ["procedure.sql.alter-table.sas"],
+      "settings": {
+        "foreground": "#f07178"
+      }
+    },
+    {
+      "name": "Procedure SQL Select",
+      "scope": ["procedure.sql.select.sas"],
+      "settings": {
+        "foreground": "#ef2731"
+      }
+    },
+    {
+      "name": "Procedure SQL Clause",
+      "scope": ["procedure.sql.clause.sas"],
+      "settings": {
+        "foreground": "#82ffc3"
       }
     },
     {
       "name": "Block Level Variables",
-      "scope": ["meta.block variable.other"],
-      "settings": {
-        "foreground": "#f07178"
-      }
-    },
-    {
-      "name": "Other Variable, String Link",
-      "scope": ["support.other.variable", "string.other.link"],
-      "settings": {
-        "foreground": "#f07178"
-      }
-    },
-    {
-      "name": "Number, Constant, Function Argument, Tag Attribute, Embedded",
       "scope": [
-        "constant.numeric",
-        "constant.language",
-        "support.constant",
-        "constant.character",
-        "constant.escape",
-        "variable.parameter",
-        "keyword.other.unit",
-        "keyword.other"
+        "operator.arithmetic.sas",
+        "operator.other.sas",
+        "operator.logical.sas",
+        "operator.sql.sas"
       ],
       "settings": {
-        "foreground": "#F78C6C"
+        "foreground": "#ff5dd1"
       }
     },
     {
-      "name": "String, Symbols, Inherited Class, Markup Heading",
+      "name": "Function SQL",
+      "scope": ["function.sql"],
+      "settings": {
+        "foreground": "#e96d1a"
+      }
+    },
+    {
+      "name": "Statement",
+      "scope": ["statement.sql.sas"],
+      "settings": {
+        "foreground": "#dbf76c"
+      }
+    },
+    {
+      "name": "Format and Inromats",
       "scope": [
-        "string",
-        "constant.other.symbol",
-        "constant.other.key",
-        "entity.other.inherited-class",
-        "markup.heading",
-        "markup.inserted.git_gutter",
-        "meta.group.braces.curly constant.other.object.key.js string.unquoted.label.js"
+        "format-informat.$w.sas",
+        "format-informat.$wd.sas",
+        "format-informat.w.sas",
+        "format-informat.wd.sas",
+        "format_informat.format.$w.sas",
+        "format_informat.format.$wd.sas",
+        "format_informat.format.w.sas",
+        "format_informat.format.wd.sas",
+        "format_informat.format.wp.sas",
+        "format_informat.format.xw.sas",
+        "format_informat.informat.$w.sas",
+        "format_informat.informat.d.sas",
+        "format_informat.informat.w.sas",
+        "format_informat.informat.wd.sas",
+        "format_informat.custom.sas"
       ],
       "settings": {
-        "foreground": "#C3E88D"
+        "foreground": "#8de8dd"
       }
     },
     {
