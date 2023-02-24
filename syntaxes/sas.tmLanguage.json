@@ -1,0 +1,276 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "sas",
+  "patterns": [
+    {
+      "include": "#global"
+    },
+    {
+      "include": "#operator"
+    },
+    {
+      "include": "#function"
+    },
+    {
+      "include": "#statement"
+    },
+    {
+      "include": "#procedure"
+    },
+    {
+      "include": "#routine"
+    },
+    {
+      "include": "#call_routines"
+    },
+    {
+      "include": "#format_informat"
+    },
+    {
+      "include": "#system_options"
+    },
+    {
+      "include": "#macro"
+    },
+    {
+      "include": "#server"
+    }
+  ],
+  "repository": {
+    "global": {
+      "patterns": [
+        {
+          "name": "global.statement.sas",
+          "match": "(?i)(?<=(\\bTHEN|\\bELSE)\\b\\s*)(CATNAME|CHECKPOINT\\s+EXECUTE_ALWAYS|DM|ENDSAS|FILENAME|FOOTNOTE\\d*|%INCLUDE|LIBNAME|%LIST|LOCK|MISSING|PAGE|RESETLINE|%RUN|SASFILE|SKIP|SYSECHO|TITLE\\d*|X)\\b(?!\\s*=)"
+        },
+        {
+          "name": "global.comment.line.sas",
+          "begin": "(?<=(^|;|\\w+:)\\s*)\\*",
+          "end": ";"
+        },
+        {
+          "name": "global.comment.line.sas",
+          "begin": "(?<=(^|;|\\w+:)\\s*%)\\*",
+          "end": ";"
+        },
+        {
+          "name": "global.comment.line.sas",
+          "begin": "(?i)(?<=(^|;|\\w+:)\\s*)comment(?![_\\+=\\[{:\\.])(?=\\b)",
+          "end": ";"
+        },
+        {
+          "name": "global.comment.block.sas",
+          "begin": "\\/\\*",
+          "end": "\\*\\/"
+        }
+      ]
+    },
+    "macro": {
+      "patterns": [
+        {
+          "name": "macro.variable.sas",
+          "match": "(?i)(?<=LET\\s+)(SPDSBNEQ|SPDSAUNQ|SPDSBSRT|SPDSCLJX|SPDSCMPF|SPDSCOMP|SPDSDCMP|SPDSEINT|SPDSEOBS|SPDSEV1T|SPDSEV2T|SPDSFSAV|SPDSHOST|SPDSIASY|SPDSIPDB|SPDSIRAT|SPDSNBIX|SPDSNETP|SPDSNIDX|SPDSRSSL|SPDSSADD|SPDSSIZE|SPDSSOBS|SPDSSQLR|SPDSSTAG|SPDSTCNT|SPDSUSAV|SPDSVERB|SPDSWCST|SPDSWDEB|SPDSWSEQ)(?=\\b)"
+        },
+        {
+          "name": "macro.routine.sas",
+          "match": "(?i)(?<=CALL\\s+)(EXECUTE|SYMDEL|SYMPUT|SYMPUTN|SYMPUTX)(?=\\s*\\()"
+        },
+        {
+          "name": "macro.statement.sas",
+          "match": "(?i)%(ABORT|COLORMAC|COPY|DISPLAY|DO|TO|UNTIL|WHILE|END|GLOBAL|GOTO|HELPCLR|IF|INCLUDE|INPUT|ISHCONV|THEN|ELSE|LET|LOCAL|MACRO|MEND|PUT|RETURN|SYMDEL|SYSCALL|SYSEXEC|SYSLPUT|SYSMACDELETE|SYSMSTORECLEAR|SYSRPUT|WINDOW)(?=\\b)"
+        },
+        {
+          "name": "macro.function.sas",
+          "match": "(?i)%(BQUOTE|CMY|CMYK|CNS|COPY_TO_NEW_ENCODING|COPY_TO_UTF8|EVAL|HLS|HLS2RGB|HSV|INDEX|LENGTH|KCMPRES|KINDEX|KLEFT|KLENGTH|KSCAN|KSUBSTR|KUPCASE|NRBQUOTE|NRQUOTE|NRSTR|QSCAN|QSUBSTR|QSYSFUNC|QUOTE|QUPCASE|SCAN|STR|SUBSTR|SUPERQ|SYMEXIST|SYMGLOBL|SYMLOCAL|SYSEVALF|SYSFUNC|SYSGET|SYSMACEXEC|SYSMACEXIST|SYSMEXECDEPTH|SYSMEXECNAME|SYSPROD|UNQUOTE|UPCASE|VALIDCHS)(?=\\b)"
+        }
+      ]
+    },
+    "server": {
+      "patterns": [
+        {
+          "name": "server.connect.sas",
+          "match": "(?i)(?<=(^|;|\\w+:)\\s*)(ABORT|CALL|ECHO|GOTO|IF|INPUT|LOG|NOTIFY|RETURN|SCANFOR|STOP|TRACE|TYPE|WAITFOR|RSUBMIT|ENDRSUBMIT|SIGNON|SIGNOFF|LIBNAME)\\b(?!\\s*=)"
+        }
+      ]
+    },
+    "procedure": {
+      "patterns": [
+        {
+          "name": "procedure.sas",
+          "match": "(?i)(?<=PROC\\s+)(APPEND|AUTHLIB|CALENDAR|CATALOG|CHART|CIMPORT|COMPARE|CONTENTS|COPY|CPORT|DATASETS|DATAKEYS|DELETE|DISPLAY|DS2|EXPORT|FCMP|FEDSQL|FORMAT|FSLIST|GROOVY|HADOOP|HDMD|HTTP|IMPORT|JAVAINFO|JSON|LUA|MEANS|MIGRATE|OPTIONS|OPTLOAD|OPTSAVE|PLOT|PMENU|PRESENV|PRINT|PRINTTO|PROTO|RANK|REPORT|S3|SCAPROC|SOAP|SORT|SQL|SQOOP|STANDARD|STREAM|SUMMARY|TABULATE|TIMEPLOT|TRANSPOSE|XSL)(?=\\b)"
+        },
+        {
+          "name": "procedure.option.sql.sas",
+          "match": "(?i)\\b(DQUOTE|INOBS|LOOPS|OUTOBS|REDUCEPUT|REDUCEPUTOBS|REDUCEPUTVALUES|UNDO_POLICY|SORTSEQ|UBUFSIZE)\\s*(?==)"
+        },
+        {
+          "name": "procedure.option.sql.sas",
+          "match": "(?i)\\b(CONSTDATETIME|NOCONSTDATETIME|ERRORSTOP|NOERRORSTOP|EXEC|NOEXEC|EXITCODE|IPASSTHRU|NOIPASSTHRU|NOPROMPT|NOREMERGE|NOSTIMER|NOTHREADS|PROMPT|REMERGE|STIMER|STOPONTRUNC|THREADS|DICTDIAG|NODICTDIAG|DOUBLE|NODOUBLE|FEEDBACK|NOFEEDBACK|FLOW|NOFLOW|NONUMBER|NOPRINT|NOSORTMSG|NOWARNRECURS|NUMBER|PRINT|SORTMSG|WARNRECURS)\\b"
+        },
+        {
+          "name": "procedure.sql.sas",
+          "match": "(?i)\\b(ALTER\\s+TABLE|CREATE(\\s+UNIQUE)*\\s+INDEX|CREATE\\s+TABLE|CREATE\\s+VIEW|DELETE\\s+FROM|DESCRIBE\\s+TABLE|DESCRIBE\\s+VIEW|DESCRIBE\\s+TABLE\\s+CONSTRAINTS|DROP\\s+INDEX|DROP\\s+TABLE|DROP\\s+VIEW|INSERT\\s+INTO|RESET|SELECT(\\s+DISTINCT|\\s+UNIQUE)*|UPDATE|VALIDATE|CONNECT\\s+TO|CONNECT\\s+USING|EXECUTE|DISCONNECT\\s+FROM)\\b(?!\\s*=)"
+        },
+        {
+          "begin": "(?i)(?<=\\bALTER\\s+TABLE)\\b(?!\\s*=)",
+          "end": ";",
+          "patterns": [
+            {
+              "name": "procedure.sql.alter-table.sas",
+              "match": "(?i)\\b(ADD\\s+CONSTRAINT|ADD|DROP\\s+FOREIGN\\s+KEY|DROP\\s+PRIMARY\\s+KEY|DROP\\s+CONSTRAINT|DROP|MODIFY)\\b"
+            }
+          ]
+        },
+        {
+          "begin": "(?i)(?<=\\bSELECT(\\s+DISTINCT|\\s+UNIQUE)*)\\b(?!\\s*=)",
+          "end": ";",
+          "patterns": [
+            {
+              "name": "procedure.sql.select.sas",
+              "match": "(?i)\\b(INTO|FROM|WHERE|GROUP\\s+BY|HAVING|ORDER\\s+BY|ASC|DESC|FROM\\s+CONNECTION\\s+TO)\\b"
+            },
+            {
+              "include": "#query_expression"
+            },
+            {
+              "include": "#subglobal"
+            },
+            {
+              "include": "#format_informat"
+            }
+          ]
+        },
+
+        {
+          "name": "procedure.sql.clause.sas",
+          "match": "(?i)\\b(SELECT|INTO|FROM|WHERE|GROUP\\s+BY|HAVING|ORDER\\s+BY|ASC|DESC|FROM\\s+CONNECTION\\s+TO)\\b"
+        }
+      ]
+    },
+    "operator": {
+      "patterns": [
+        {
+          "name": "operator.arithmetic.sas",
+          "match": "[\\+\\-\\*\\/]"
+        },
+        {
+          "name": "operator.other.sas",
+          "match": "(><|<>|\\|\\||!!)"
+        },
+        {
+          "name": "operator.other.sas",
+          "match": "(?i)(?<=\\s)(MIN|MAX)(?=\\b)"
+        },
+        {
+          "name": "operator.logical.sas",
+          "match": "(=|^=|~=|>|<|>=|<=|&|\\||!|~)"
+        },
+        {
+          "name": "operator.logical.sas",
+          "match": "(?i)(?<=\\s)(EQ|NE|GT|LT|GE|LE|IN|AND|OR|NOT)(?=\\b)"
+        },
+        {
+          "name": "operator.sql.sas",
+          "match": "(?i)\\b((NOT\\s+)*BETWEEN|(NOT\\s+)*CONTAINS|(NOT\\s+)*EXISTS|(NOT\\s+)*EXISTS|(NOT\\s+)*IN|IS(\\s+NOT)*|(NOT\\s+)*LIKE|NOT|AND|OR|CALCULATED|CASE|WHEN|THEN|ELSE|END|ON|(NATURAL\\s+)*(INNER\\s+)*JOIN|(NATURAL\\s+)*(LEFT|RIGHT|FULL)(\\s+OUTER)*\\s+JOIN|(CROSS|UNION)\\s+JOIN|AS|INTERSECT|(OUTER\\s+)*UNION|EXCEPT|CORR(ESPONDING)*|ALL|DISTINCT)\\b"
+        }
+      ]
+    },
+    "function": {
+      "patterns": [
+        {
+          "name": "support.function.sql",
+          "match": "(?i)(?<=\\b)(BTRIM|COALESCE|LOWER|UPPER|SUBSTRING|AVG|MEAN|COUNT|FREQ|N|CSS|CV|MAX|MEDIAN|MIN|NMISS|PRT|RANGE|STD|STDERR|SUM|SUMWGT|T|USS|VAR)(?=\\s*\\()"
+        }
+      ]
+    },
+    "statement": {
+      "patterns": [
+        {
+          "name": "statement.sql.sas",
+          "match": "(?i)\\b(ALTER\\s+TABLE|CREATE(\\s+UNIQUE)*\\s+INDEX|CREATE\\s+TABLE|CREATE\\s+VIEW|DELETE\\s+FROM|DESCRIBE\\s+TABLE|DESCRIBE\\s+VIEW|DESCRIBE\\s+TABLE\\s+CONSTRAINTS|DROP\\s+INDEX|DROP\\s+TABLE|DROP\\s+VIEW|INSERT\\s+INTO|RESET|SELECT(\\s+DISTINCT|\\s+UNIQUE)*|UPDATE|VALIDATE|CONNECT\\s+TO|CONNECT\\s+USING|EXECUTE|DISCONNECT\\s+FROM)\\b(?!\\s*=)"
+        },
+        {
+          "name": "statement.sql.modifier.sas",
+          "match": "(?i)\\b(INFORMAT|FORMAT|LABEL|LENGTH|TRANSCODE)(?=\\s*=)"
+        }
+      ]
+    },
+    "format_informat": {
+      "patterns": [
+        {
+          "name": "format-informat.$w.sas",
+          "match": "(?i)\\B\\$(ASCII|BASE64X|BINARY|CHAR|EBCDIC|HEX|OCTAL|QUOTE|UPCASE|UUID|VARYING|)\\d*\\."
+        },
+        {
+          "name": "format-informat.$wd.sas",
+          "match": "(?i)\\B\\$(N8601B|N8601E)\\d*\\.\\d*"
+        },
+        {
+          "name": "format-informat.w.sas",
+          "match": "(?i)\\b(B8601DA|B8601DN|B8601DX|B8601LX|B8601TX|DATE|DDMMYY|E8601DA|E8601DN|E8601DX|E8601LX|E8601TX|HEX|JULIAN|MMDDYY|MONYY|PDJULG|PDJULI|WEEKU|WEEKV|WEEKW|YYMMDD|YYQ)\\d*\\."
+        },
+        {
+          "name": "format-informat.wd.sas",
+          "match": "(?i)\\b(B8601DT|B8601TM|COMMA|COMMAX|E8601DT|E8601TM|E8601TZ|FLOAT|IB|IBR|IEEE|MDYAMPM|NUMX|PD|PERCENT|PIB|PIBR|PK|RB|S370FF|S370FIB|S370FIBU|S370FPD|S370FPDU|S370FPIB|S370FRB|S370FZD|S370FZDL|S370FZDS|S370FZDT|S370FZDU|VAXRB|VMSZN|ZD)\\d*\\.\\d*"
+        },
+        {
+          "name": "format_informat.format.$w.sas",
+          "match": "(?i)\\B\\$(CSTR|MSGCASE|REVERJ|REVERS)\\d*\\."
+        },
+        {
+          "name": "format_informat.format.$wd.sas",
+          "match": "(?i)\\B\\$(N8601BA|N8601EA|N8601EH|N8601EX|N8601H|N8601X)\\d*\\.\\d*"
+        },
+        {
+          "name": "format_informat.format.w.sas",
+          "match": "(?i)\\b(BEST|BINARY|B8601DZ|B8601LZ|B8601TZ|DAY|DOWNAME|DTDATE|DTMONYY|DTWKDATX|DTYEAR|DTYYQC|E|E8601DZ|E8601LZ|FRACT|JULDAY|MMYY|MONNAME|MONTH|NENGO|NLBEST|NLDATE|NLDATEL|NLDATEM|NLDATEMD|NLDATEMDL|NLDATEMDM|NLDATEMDS|NLDATEMN|NLDATES|NLDATEW|NLDATEWN|NLDATEYM|NLDATEYML|NLDATEYMM|NLDATEYMS|NLDATEYQ|NLDATEYQL|NLDATEYQM|NLDATEYQS|NLDATEYR|NLDATEYW|NLDATM|NLDATMAP|NLDATMDT|NLDATML|NLDATMM|NLDATMMD|NLDATMMDL|NLDATMMDM|NLDATMMDS|NLDATMMN|NLDATMS|NLDATMTM|NLDATMTZ|NLDATMW|NLDATMWN|NLDATMWZ|NLDATMYM|NLDATMYML|NLDATMYMM|NLDATMYMS|NLDATMYQ|NLDATMYQL|NLDATMYQM|NLDATMYQS|NLDATMYR|NLDATMYW|NLDATMZ|NLTIMAP|NLTIME|OCTAL|QTR|QTRR|ROMAN|SSN|WEEKDATE|WEEKDATX|WEEKDAY|WORDDATE|WORDDATX|WORDF|WORDS|YEAR|YYMM|YYMON|YYQR|YYQZ|YYWEEKU|YYWEEKV|YYWEEKW)\\d*\\."
+        },
+        {
+          "name": "format_informat.format.wd.sas",
+          "match": "(?i)\\b(DATEAMPM|DATETIME|DOLLAR|DOLLARX|EURO|EUROX|F|HHMM|HOUR|MMSS|NEGPAREN|NLMNIAED|NLMNIAUD|NLMNIBGN|NLMNIBRL|NLMNICAD|NLMNICHF|NLMNICNY|NLMNICZK|NLMNIDKK|NLMNIEEK|NLMNIEGP|NLMNIEUR|NLMNIGBP|NLMNIHKD|NLMNIHRK|NLMNIHUF|NLMNIIDR|NLMNIILS|NLMNIINR|NLMNIJPY|NLMNIKRW|NLMNILTL|NLMNILVL|NLMNIMOP|NLMNIMXN|NLMNIMYR|NLMNINOK|NLMNINZD|NLMNIPLN|NLMNIRUB|NLMNISEK|NLMNISGD|NLMNITHB|NLMNITRY|NLMNITWD|NLMNIUSD|NLMNIZAR|NLMNLAED|NLMNLAUD|NLMNLBGN|NLMNLBRL|NLMNLCAD|NLMNLCHF|NLMNLCNY|NLMNLCZK|NLMNLDKK|NLMNLEEK|NLMNLEGP|NLMNLEUR|NLMNLGBP|NLMNLHKD|NLMNLHRK|NLMNLHUF|NLMNLIDR|NLMNLILS|NLMNLINR|NLMNLJPY|NLMNLKRW|NLMNLLTL|NLMNLLVL|NLMNLMOP|NLMNLMXN|NLMNLMYR|NLMNLNOK|NLMNLNZD|NLMNLPLN|NLMNLRUB|NLMNLSEK|NLMNLSGD|NLMNLTHB|NLMNLTRY|NLMNLTWD|NLMNLUSD|NLMNLZAR|NLMNY|NLMNYI|NLNUM|NLNUMI|NLPCT|NLPCTI|NLPCTN|NLPCTP|NLPVALUE|NLSTRMON|NLSTRQTR|NLSTRWK|ODDSR|PERCENTN|PVALUE|TIME|TIMEAMPM|TOD|Z)\\d*\\.\\d*"
+        },
+        {
+          "name": "format_informat.format.wp.sas",
+          "match": "(?i)\\b(BESTD|D)\\d*\\.\\d*"
+        },
+        {
+          "name": "format_informat.format.xw.sas",
+          "match": "(?i)\\b(DDMMYY|MMDDYY|MMYY|YYMMDD|YYMM|YYQ|YYQR)[CDNPS]\\d*\\."
+        },
+        {
+          "name": "format_informat.informat.$w.sas",
+          "match": "(?i)\\B\\$(CB|CHARZB|PHEX)\\d*\\."
+        },
+        {
+          "name": "format_informat.informat.d.sas",
+          "match": "(?i)\\b(PUNCH).\\d*"
+        },
+        {
+          "name": "format_informat.informat.w.sas",
+          "match": "(?i)\\b(ANYDTDTE|ANYDTDTM|ANYDTTME|DATETIME|HHMMSS|MSEC|PDTIME|RMFDUR|RMFSTAMP|SHRSTAMP|SMFSTAMP|STIMER|TIME|TODSTAMP|TRAILSGN|TU|YYMMN)\\d*\\."
+        },
+        {
+          "name": "format_informat.informat.wd.sas",
+          "match": "(?i)\\b(B8601CI|B8601DJ|B8601DZ|B8601TZ|BINARY|BITS|BZ|CB|E8601DZ|E8601LZ|OCTAL|ROW|S370FZDB|YMDDTTM|ZDB|ZDV)\\d*\\.\\d*"
+        },
+        {
+          "name": "format_informat.custom.sas",
+          "match": "(?i)(?<=^|\\s)\\$?[A-z]\\w*\\d*?\\.\\d*(?![\\w])"
+        }
+      ]
+    },
+    "system_options": {
+      "patterns": [
+        {
+          "name": "system_options.a.sas",
+          "match": "(?i)%(ACCESSIBILITY|ACCESSIBLECHECK)(?=\\s*\\()"
+        },
+        {
+          "name": "system_options.b.sas",
+          "match": "(?i)%(ACCESSIBILITY|ACCESSIBLECHECK)(?=\\b)"
+        }
+      ]
+    }
+  },
+  "scopeName": "source.sas"
+}
