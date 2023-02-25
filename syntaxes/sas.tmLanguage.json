@@ -18,12 +18,6 @@
       "include": "#procedure"
     },
     {
-      "include": "#routine"
-    },
-    {
-      "include": "#call_routines"
-    },
-    {
       "include": "#format_informat"
     },
     {
@@ -76,6 +70,18 @@
         {
           "name": "global.keyword.sas",
           "match": "(?i)(?<=(^|;|\\w+:)\\s*)(RUN|PROC)\\b(?!\\s*=)"
+        },
+        {
+          "name": "global.numeric.constant.sas",
+          "match": "(?i)\\b[0-9]*\\.?[0-9]+([ed][-+]?[0-9]+)?\\b"
+        },
+        {
+          "name": "global.numeric.constant.sas",
+          "match": "(?i)'[^']*'(dt|d|t)"
+        },
+        {
+          "name": "global.numeric.constant.sas",
+          "match": "(?i)\"[^\"]*\"(dt|d|t)"
         }
       ]
     },
