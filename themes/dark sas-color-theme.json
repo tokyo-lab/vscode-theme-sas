@@ -113,8 +113,8 @@
       }
     },
     {
-      "name": "Function SQL",
-      "scope": ["function.sql"],
+      "name": "String",
+      "scope": ["global.string.sas"],
       "settings": {
         "foreground": "#e96d1a"
       }
@@ -150,26 +150,17 @@
       }
     },
     {
-      "name": "Class, Support",
-      "scope": [
-        "entity.name",
-        "support.type",
-        "support.class",
-        "support.other.namespace.use.php",
-        "meta.use.php",
-        "support.other.namespace.php",
-        "markup.changed.git_gutter",
-        "support.type.sys-types"
-      ],
+      "name": "System Options",
+      "scope": ["system.options.sas"],
       "settings": {
-        "foreground": "#FFCB6B"
+        "foreground": "#ef00d7"
       }
     },
     {
-      "name": "Entity Types",
-      "scope": ["support.type"],
+      "name": "Global Keywords",
+      "scope": ["global.keyword.sas"],
       "settings": {
-        "foreground": "#B2CCD6"
+        "foreground": "#204ba8"
       }
     },
     {
