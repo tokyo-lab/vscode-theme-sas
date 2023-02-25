@@ -361,6 +361,12 @@
           "include": "#global"
         },
         {
+          "include": "#macro"
+        },
+        {
+          "include": "#data_step_statment"
+        },
+        {
           "include": "#data_step_statment_keyword"
         },
         {
@@ -375,6 +381,15 @@
           "patterns": [
             {
               "include": "#global"
+            },
+            {
+              "include": "#macro"
+            },
+            {
+              "include": "#data_step_statment"
+            },
+            {
+              "include": "#data_step_statment_keyword"
             },
             {
               "include": "#data_set_option"
