@@ -12,6 +12,24 @@
       "include": "#function"
     },
     {
+      "include": "#data_step"
+    },
+    {
+      "include": "#data_step_statement"
+    },
+    {
+      "include": "#data_set_option"
+    },
+    {
+      "include": "#sql_data_set_option"
+    },
+    {
+      "include": "#proc_data_set_option"
+    },
+    {
+      "include": "#data_set_option_rules"
+    },
+    {
       "include": "#statement"
     },
     {
@@ -327,6 +345,177 @@
         {
           "name": "system.options.sas",
           "match": "(?i)\\b(ODSDEST|ODSGRAPHICS|ODSSTYLE)\\s*(?==)"
+        }
+      ]
+    },
+    "data_step": {
+      "begin": "(?i)(?<=(^|;|\\w+:)\\s*)(DATA)\\b(?!\\s*=)",
+      "end": "(?i)\\b(?=(?<=(^|;|\\w+:)\\s*)(RUN(?=.*;)|DATA\\b|PROC(?=\\s+\\w+.*;))(?!\\s*=))|\\B(?=(?<=(^|;|\\w+:)\\s*)%MEND)",
+      "beginCaptures": {
+        "0": {
+          "name": "data.step.sas"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#global"
+        },
+        {
+          "include": "#data_step_statment_keyword"
+        },
+        {
+          "include": "#data_set_option"
+        },
+        {
+          "include": "#format_informat"
+        },
+        {
+          "begin": "(?i)(?<=(^|;|\\w+:)\\s*DATA)\\b",
+          "end": ";",
+          "patterns": [
+            {
+              "include": "#global"
+            },
+            {
+              "include": "#data_set_option"
+            },
+            {
+              "name": "data.step.sas",
+              "match": "(?i)(?<=(^|;|\\w+:)\\s*DATA\\s+)(_(NULL|DATA|LAST)_)"
+            }
+          ]
+        }
+      ]
+    },
+    "data_step_statement": {
+      "patterns": [
+        {
+          "begin": "(?i)(?<=(^|;|\\w+:|ELSE)\\s*)(IF)(?=\\b)",
+          "end": "(?i)(?:;|\\b(THEN)\\b)",
+          "beginCaptures": {
+            "0": {
+              "name": "data.step.statement.sas"
+            }
+          },
+          "endCaptures": {
+            "1": {
+              "name": "data.step.statement.sas"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#global"
+            }
+          ]
+        },
+        {
+          "name": "data.step.keyword.sas",
+          "match": "(?i)(?<=(\\bTHEN|\\bELSE)\\b\\s*)(RUN)\\b(?!\\s*=)"
+        },
+
+        {
+          "name": "data.step.keyword.sas",
+          "match": "(?i)(?<=(\\bTHEN|\\bELSE)\\b\\s*)(CARDS|DATALINES|CARDS4|DATALINES4)\\b(?!\\s*=)"
+        },
+        {
+          "name": "data.step.keyword.sas",
+          "match": "(?i)(?<=(\\bTHEN|\\bELSE)\\b\\s*)(ABORT|ARRAY|ATTRIB|BY|CALL|CONTINUE|DATA|DELETE|DESCRIBE|DISPLAY|DO\\s+UNTIL|DO\\s+WHILE|DO|DROP|END|ERROR|EXECUTE|FILE|FORMAT|GO\\s+TO|GOTO|ELSE|INFILE|INFORMAT|INPUT|KEEP|LABEL|LEAVE|LENGTH|LINK|LIST|LOCKDOWN|LOSTCARD|MERGE|MODIFY|OUTPUT|PUT|PUTLOG|REDIRECT|REMOVE|RENAME|REPLACE|RETAIN|RETURN|SELECT|SET|STOP|UPDATE|WHERE|WINDOW)\\b(?!\\s*=)"
+        },
+        {
+          "begin": "(?i)(?<=(^|;|\\w+:)\\s*)(CARDS|DATALINES)\\s*;",
+          "end": "(?i)^(?=.*(;|RUN;))",
+          "beginCaptures": {
+            "2": {
+              "name": "data.step.keyword.sas"
+            }
+          },
+          "patterns": [
+            {
+              "name": "string.unquoted.sas",
+              "match": "^.*$"
+            }
+          ]
+        },
+        {
+          "begin": "(?i)(?<=(^|;|\\w+:)\\s*)(CARDS4|DATALINES4)\\s*;",
+          "end": "^(?=;;;;)",
+          "beginCaptures": {
+            "2": {
+              "name": "data.step.keyword.sas"
+            }
+          },
+          "patterns": [
+            {
+              "name": "string.unquoted.sas",
+              "match": "^.*$"
+            }
+          ]
+        },
+        {
+          "name": "data.step.keyword.sas",
+          "match": "(?i)(?<=(^|;|\\w+:)\\s*)(ABORT|ARRAY|ATTRIB|BY|CALL|CONTINUE|DELETE|DESCRIBE|DISPLAY|DO\\s+UNTIL|DO\\s+WHILE|DO|DROP|END|ERROR|EXECUTE|FILE|FORMAT|GO\\s+TO|GOTO|ELSE|INFILE|INFORMAT|INPUT|KEEP|LABEL|LEAVE|LENGTH|LINK|LIST|LOCKDOWN|LOSTCARD|MERGE|MODIFY|OUTPUT|PUT|PUTLOG|REDIRECT|REMOVE|RENAME|REPLACE|RETAIN|RETURN|SELECT|SET|STOP|UPDATE|WHERE|WINDOW)\\b(?!\\s*=)"
+        }
+      ]
+    },
+    "data_set_option": {
+      "begin": "(?i)(?<=(DATA|SET))\\b",
+      "end": "(\\B|\\b)(?=\\s*;)",
+      "patterns": [
+        {
+          "include": "#global"
+        },
+        {
+          "begin": "(?i)(?<=\\s+[A-Z&_][\\d\\w&_.]*\\s*)\\(",
+          "end": "\\)",
+          "patterns": [
+            {
+              "include": "#data_set_option_rules"
+            }
+          ]
+        }
+      ]
+    },
+    "sql_data_set_option": {
+      "begin": "(?i)(?<=(CREATE\\s+TABLE\\s+|FROM\\s+|,\\s*|LIKE\\s+)[A-Z&_][\\d\\w&_.]*\\s*)\\(",
+      "end": "\\)",
+      "patterns": [
+        {
+          "include": "#global"
+        },
+        {
+          "include": "#data_set_option_rules"
+        }
+      ]
+    },
+    "proc_data_set_option": {
+      "begin": "(?i)(?<==\\s*[A-Z&_][\\d\\w&_.]*\\s*)\\(",
+      "end": "\\)",
+      "patterns": [
+        {
+          "include": "#global"
+        },
+        {
+          "include": "#data_set_option_rules"
+        }
+      ]
+    },
+    "data_set_option_rules": {
+      "patterns": [
+        {
+          "include": "#global"
+        },
+        {
+          "name": "data.set.options.sas",
+          "match": "(?i)\\b(ALTER|BUFNO|BUFSIZE|CNTLLEV|COMPRESS|DLDMGACTION|DROP|ENCRYPT|ENCRYPTKEY|EXTENDOBSCOUNTER|FILECLOSE|FIRSTOBS|GENMAX|GENNUM|IDXNAME|IDXWHERE|INDEX|IN|KEEP|LABEL|MAXTABLEMEM|OBSBUF|OBS|OUTREP|POINTOBS|PW|PWREQ|READ|RENAME|REPEMPTY|REPLACE|REUSE|ROLE|SORTEDBY|SPILL|TOBSNO|TYPE|USEDIRECTIO|WHERE|WHEREUP|WRITE)\\b(?=\\s*=)"
+        },
+        {
+          "begin": "(?i)(?<=\\b(INDEX|RENAME|WHERE)\\s*=)\\(",
+          "end": "\\)",
+          "patterns": [
+            {
+              "include": "#global"
+            }
+          ]
         }
       ]
     }
