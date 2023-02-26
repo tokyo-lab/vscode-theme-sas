@@ -264,7 +264,7 @@
       "patterns": [
         {
           "name": "format-informat.$w.sas",
-          "match": "(?i)\\B\\$(ASCII|BASE64X|BINARY|CHAR|EBCDIC|HEX|OCTAL|QUOTE|UPCASE|UUID|VARYING|)\\d*\\."
+          "match": "(?i)\\B\\$(ASCII|BASE64X|BINARY|CHAR|CSTR|EBCDIC|HEX|MSGCASE|N8601B|N860BA|N8601E|N8601EA|N8601EH|N8601EX|N8601H|N8601X|OCTAL|QUOTE|REVERJ|REVERS|UPCASE|UUID|VARYING|BEST|BESTD|BINARY|COMMA|COMMAX|D|DATE)\\d*\\."
         },
         {
           "name": "format-informat.$wd.sas",
