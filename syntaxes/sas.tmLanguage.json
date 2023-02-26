@@ -354,41 +354,6 @@
           "match": "(?i)\\b(ODSDEST|ODSGRAPHICS|ODSSTYLE)\\s*(?==)"
         }
       ]
-    },
-    "data_step": {
-      "begin": "(?i)(DATA(?=.*;))",
-      "end": "(?i)(RUN(?=.*;))",
-      "beginCaptures": {
-        "0": {
-          "name": "datastep.sas"
-        }
-      },
-      "patterns": [
-        {
-          "include": "#global"
-        },
-        {
-          "include": "#macro"
-        },
-        {
-          "include": "#data_set_option"
-        },
-        {
-          "include": "#format_informat"
-        },
-        {
-          "include": "#operator"
-        },
-        {
-          "include": "#function"
-        },
-        {
-          "include": "#statement"
-        },
-        {
-          "include": "#procedure"
-        }
-      ]
     }
   },
   "scopeName": "source.sas"

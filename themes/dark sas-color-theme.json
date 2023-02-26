@@ -190,13 +190,6 @@
       "settings": {
         "foreground": "#774631"
       }
-    },
-    {
-      "name": "Data Step",
-      "scope": ["data.step.sas"],
-      "settings": {
-        "foreground": "#49bd00"
-      }
     }
   ]
 }
