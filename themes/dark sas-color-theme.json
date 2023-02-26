@@ -127,6 +127,13 @@
       }
     },
     {
+      "name": "Data Step Statement",
+      "scope": ["statement.data.step.sas"],
+      "settings": {
+        "foreground": "#f06cf7"
+      }
+    },
+    {
       "name": "Format and Inromats",
       "scope": [
         "format-informat.$w.sas",
@@ -186,7 +193,7 @@
     },
     {
       "name": "Data Step",
-      "scope": ["data step.sas"],
+      "scope": ["data.step.sas"],
       "settings": {
         "foreground": "#49bd00"
       }
