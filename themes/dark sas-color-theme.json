@@ -158,9 +158,16 @@
     },
     {
       "name": "System Options",
-      "scope": ["system.options.sas"],
+      "scope": ["options.system.sas"],
       "settings": {
         "foreground": "#ef00d7"
+      }
+    },
+    {
+      "name": "Data Set Options",
+      "scope": ["options.data_set.sas"],
+      "settings": {
+        "foreground": "#e92d2d"
       }
     },
     {
