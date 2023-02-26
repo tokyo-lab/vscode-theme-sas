@@ -352,11 +352,11 @@
       ]
     },
     "data_step": {
-      "begin": "(?i)(?<=(^|;|\\w+:)\\s*)(DATA)\\b(?!\\s*=)",
-      "end": "(?i)\\b(?=(?<=(^|;|\\w+:)\\s*)(RUN(?=.*;)|DATA\\b|)",
+      "begin": "(?i)(DATA(?=.*;))",
+      "end": "(?i)(RUN(?=.*;))",
       "beginCaptures": {
         "0": {
-          "name": "data.step.sas"
+          "name": "datastep.sas"
         }
       },
       "patterns": [
@@ -383,19 +383,6 @@
         },
         {
           "include": "#procedure"
-        },
-        {
-          "begin": "(?i)(?<=(^|;|\\w+:)\\s*DATA)\\b",
-          "end": ";",
-          "patterns": [
-            {
-              "include": "#statement"
-            },
-            {
-              "name": "keyword.other.sas",
-              "match": "(?i)(?<=(^|;|\\w+:)\\s*DATA\\s+)(_(NULL|DATA|LAST)_)"
-            }
-          ]
         }
       ]
     }
