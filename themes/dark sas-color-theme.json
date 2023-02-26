@@ -178,31 +178,10 @@
       }
     },
     {
-      "name": "Data Set Options",
-      "scope": ["data.set.options.sas"],
-      "settings": {
-        "foreground": "#624b8b"
-      }
-    },
-    {
-      "name": "Data Step",
-      "scope": ["data.step.sas"],
-      "settings": {
-        "foreground": "#389087"
-      }
-    },
-    {
-      "name": "Data Step Statement",
-      "scope": ["data.step.statement.sas"],
+      "name": "Statement",
+      "scope": ["statement.sas"],
       "settings": {
         "foreground": "#774631"
-      }
-    },
-    {
-      "name": "Data Step Keyword",
-      "scope": ["data.step.keyword.sas"],
-      "settings": {
-        "foreground": "#9ea404"
       }
     }
   ]

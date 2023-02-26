@@ -87,7 +87,7 @@
         },
         {
           "name": "global.keyword.sas",
-          "match": "(?i)(?<=(^|;|\\w+:)\\s*)(RUN|PROC)\\b(?!\\s*=)"
+          "match": "(?i)(?<=(^|;|\\w+:)\\s*)(PROC|DATA)\\b(?!\\s*=)"
         },
         {
           "name": "global.keyword.sas",
@@ -243,6 +243,15 @@
     },
     "statement": {
       "patterns": [
+        {
+          "name": "statement.sas",
+          "match": "(?i)(?<=(^|;|\\w+:)\\s*)(RUN|QUIT)\\b(?!\\s*=)"
+        },
+        {
+          "name": "statement.sas",
+          "match": "(?i)\\b(KEEP\\s+CONSTRAINT|KEEP|DROP\\s+FOREIGN\\s+KEY|DROP\\s+PRIMARY\\s+KEY|DROP\\s+CONSTRAINT|DROP|MODIFY)\\b"
+        },
+
         {
           "name": "statement.sql.sas",
           "match": "(?i)\\b(ALTER\\s+TABLE|CREATE(\\s+UNIQUE)*\\s+INDEX|CREATE\\s+TABLE|CREATE\\s+VIEW|DELETE\\s+FROM|DESCRIBE\\s+TABLE|DESCRIBE\\s+VIEW|DESCRIBE\\s+TABLE\\s+CONSTRAINTS|DROP\\s+INDEX|DROP\\s+TABLE|DROP\\s+VIEW|INSERT\\s+INTO|RESET|SELECT(\\s+DISTINCT|\\s+UNIQUE)*|UPDATE|VALIDATE|CONNECT\\s+TO|CONNECT\\s+USING|EXECUTE|DISCONNECT\\s+FROM)\\b(?!\\s*=)"
