@@ -239,7 +239,7 @@
       "patterns": [
         {
           "name": "statement.sas",
-          "match": "(?i)(?<=(^|;|\\w+:)\\s*)(RUN|QUIT)\\b(?!\\s*=)"
+          "match": "(?i)(RUN|QUIT)(?=.*;)"
         },
         {
           "name": "statement.data.step.sas",
