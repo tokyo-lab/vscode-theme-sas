@@ -15,12 +15,6 @@
       "include": "#data_step"
     },
     {
-      "include": "#data_step_statement"
-    },
-    {
-      "include": "#data_set_option"
-    },
-    {
       "include": "#sql_data_set_option"
     },
     {
@@ -354,6 +348,54 @@
         {
           "name": "system.options.sas",
           "match": "(?i)\\b(ODSDEST|ODSGRAPHICS|ODSSTYLE)\\s*(?==)"
+        }
+      ]
+    },
+    "data_step": {
+      "begin": "(?i)(?<=(^|;|\\w+:)\\s*)(DATA)\\b(?!\\s*=)",
+      "end": "(?i)\\b(?=(?<=(^|;|\\w+:)\\s*)(RUN(?=.*;)|DATA\\b|)",
+      "beginCaptures": {
+        "0": {
+          "name": "data.step.sas"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#global"
+        },
+        {
+          "include": "#macro"
+        },
+        {
+          "include": "#data_set_option"
+        },
+        {
+          "include": "#format_informat"
+        },
+        {
+          "include": "#operator"
+        },
+        {
+          "include": "#function"
+        },
+        {
+          "include": "#statement"
+        },
+        {
+          "include": "#procedure"
+        },
+        {
+          "begin": "(?i)(?<=(^|;|\\w+:)\\s*DATA)\\b",
+          "end": ";",
+          "patterns": [
+            {
+              "include": "#statement"
+            },
+            {
+              "name": "keyword.other.sas",
+              "match": "(?i)(?<=(^|;|\\w+:)\\s*DATA\\s+)(_(NULL|DATA|LAST)_)"
+            }
+          ]
         }
       ]
     }
