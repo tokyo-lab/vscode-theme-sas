@@ -117,6 +117,10 @@
         {
           "name": "server.connect.sas",
           "match": "(?i)(?<=(^|;|\\w+:)\\s*)(ABORT|CALL|ECHO|GOTO|IF|INPUT|LOG|NOTIFY|RETURN|SCANFOR|STOP|TRACE|TYPE|WAITFOR|RSUBMIT|ENDRSUBMIT|SIGNON|SIGNOFF|LIBNAME)\\b(?!\\s*=)"
+        },
+
+        {
+          "include": "#options"
         }
       ]
     },
@@ -316,13 +320,6 @@
       ]
     },
     "options": {
-      "begin": "(?i)(?<=(^|;|\\w+:)\\s*)(OPTIONS)\\b(?!\\s*=)",
-      "end": ";",
-      "beginCaptures": {
-        "0": {
-          "name": "options.system.sas"
-        }
-      },
       "patterns": [
         {
           "name": "options.system.sas",
