@@ -15,15 +15,6 @@
       "include": "#data_step"
     },
     {
-      "include": "#sql_data_set_option"
-    },
-    {
-      "include": "#proc_data_set_option"
-    },
-    {
-      "include": "#data_set_option_rules"
-    },
-    {
       "include": "#statement"
     },
     {
@@ -166,13 +157,13 @@
               "match": "(?i)\\b(INTO|FROM|WHERE|GROUP\\s+BY|HAVING|ORDER\\s+BY|ASC|DESC|FROM\\s+CONNECTION\\s+TO)\\b"
             },
             {
-              "include": "#query_expression"
-            },
-            {
-              "include": "#subglobal"
+              "include": "#global"
             },
             {
               "include": "#format_informat"
+            },
+            {
+              "include": "#options"
             }
           ]
         },
@@ -355,8 +346,8 @@
         },
 
         {
-          "name": "options.data_set.sas",
-          "match": "(?i)\\b(ALTER|BUFNO|BUFSIZE|COMPRESS|CNTLLEV|DLDMGACTION|DROP|ENCRYPT|ENCRYPTKEY|EXTENDOBSCOUNTER|FILECLOSE||||||)(?=.*=)"
+          "name": "options.dataset.sas",
+          "match": "(?i)\\b(ALTER|BUFNO|BUFSIZE|COMPRESS|CNTLLEV|DATA|DLDMGACTION|DROP|ENCRYPT|ENCRYPTKEY|EXTENDOBSCOUNTER|FILECLOSE)(?=.*=)"
         }
       ]
     }

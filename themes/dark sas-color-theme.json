@@ -165,7 +165,7 @@
     },
     {
       "name": "Data Set Options",
-      "scope": ["options.data_set.sas"],
+      "scope": ["options.dataset.sas"],
       "settings": {
         "foreground": "#e92d2d"
       }
